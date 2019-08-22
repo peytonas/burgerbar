@@ -15,11 +15,24 @@ let _state = {
 
 
 export default class BurgerService {
-  constructor() {
-    console.log("Enjoy your burger!")
+  deleteMeat(burgerIndex, meatIndex) {
+    _state.burgers[burgerIndex].meat.splice(meatIndex, 1)
+  }
+  deleteBurger(index) {
+    _state.burgers.splice(index, 1)
+  }
+  addMeat(newMeat, burgerIndex) {
+    _state.burgers[burgerIndex].meat.push(newMeat)
   }
   addBurger(newBurger) {
     _state.burgers.push(new Burger(newBurger))
     console.log(_state.burgers)
+  }
+
+  constructor() {
+    console.log("Enjoy your burger!")
+  }
+  get Burger() {
+    return _state.burgers.map(burger => new Burger(burger))
   }
 }

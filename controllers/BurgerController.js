@@ -21,9 +21,10 @@ export default class BurgerController {
   addBurger(event) {
     event.preventDefault()
     let form = event.target
-    let newPizza = {
+    let newBurger = {
       name: form.name.value
     }
+    _burgerService.addBurger(newBurger)
     _draw()
   }
 }
