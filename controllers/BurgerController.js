@@ -10,13 +10,12 @@ function _draw() {
   burgers.forEach((burger, index) => {
     template += burger.getTemplate(index)
   })
-  document.querySelector('#pizza').innerHTML = template
+  document.querySelector('#burger').innerHTML = template
 }
 
 
 export default class BurgerController {
   constructor() {
-    console.log("Burgers!")
     _draw()
   }
 
@@ -36,8 +35,27 @@ export default class BurgerController {
     _burgerService.addMeat(newMeat, burgerIndex)
     _draw()
   }
+
+  addIngredients(event, burgerIndex) {
+    event.preventDefault()
+    let form = event.target
+    let newIngredients = form.ingredients.value
+    _burgerService.addIngredients(newIngredients, burgerIndex)
+    _draw()
+  }
+
+  deleteBurger(index) {
+    _burgerService.deleteBurger(index)
+    _draw()
+  }
+
   deleteMeat(burgerIndex, meatIndex) {
     _burgerService.deleteMeat(burgerIndex, meatIndex)
+    _draw()
+  }
+
+  deleteIngredients(burgerIndex, ingredientsIndex) {
+    _burgerService.deleteIngredients(burgerIndex, ingredientsIndex)
     _draw()
   }
 }
