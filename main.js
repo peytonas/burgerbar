@@ -10,3 +10,5 @@ class Burger {
     }
   }
 }
+
+window['burger'] = new Burger()
