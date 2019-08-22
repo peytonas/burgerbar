@@ -15,34 +15,34 @@ export default class Burger {
     let template =
       `
         <div class="col-4">
-          <h1>${this.name}</h1>
-          <h3>${this.bun}</h3>
-          <h3>${this.meat}</h3>
-          <h3>${this.ingredients}</h3>
-          <h3>${this.comesWith}</h3>
-          <h3>${this.price}</h3>
-          <ul>`
+            <h1>${this.name}</h1>
+            <h3>${this.bun}</h3>
+            <h3>${this.meat}</h3>
+            <h3>${this.ingredients}</h3>
+            <h3>${this.comesWith}</h3>
+            <h3>${this.price}</h3>
+            <ul>`
     template += this.drawMeat(index)
     template += ` </ul>
             <form onsubmit="burger.controllers.burgerController.addMeat(event, ${index})">
               <div class="form-group">
                 <label for="meat">meat</label>
-                input type="text" class="form-control" name="meat" placeholder="choose meat" required>
-                </div>
-                <button type="submit">+</button>
-              </form>
-              <h3>${this.price}</h3>
-              <button type="button" onclick="burger.controllers.burgerController.deleteBurger(${index})">x</button>
+                <input type="text" class="form-control" name="meat" placeholder="choose meat" required>
+              </div>
+              <button type="submit">+</button>
+            </form>
+            <h3>${this.price}</h3>
+            <button type="button" onclick="burger.controllers.burgerController.deleteBurger(${index})">x</button>
           </div>
-    
     `
     return template
   }
   drawMeat(burgerIndex) {
     let meatTemplate = ""
     this.meat.forEach((m, meatIndex) => {
-      meatTemplate += `<li>${m}<span onclick="burger.controllers.burgerController.deleteTopping(${burgerIndex}, ${meatIndex})>x</span></li>`
+      meatTemplate += `<li>${m}<span onclick="burger.controllers.burgerController.deleteMeat(${burgerIndex}, ${meatIndex})>x</span></li>`
     });
+    return meatTemplate
   }
 
 }

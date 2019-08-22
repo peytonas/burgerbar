@@ -4,7 +4,7 @@ let _state = {
   burgers: [new Burger({
     name: "Poblano Picasso Burger",
     bun: "white",
-    meat: "beef",
+    meat: ["beef"],
     ingredients: ["mayo", "mustard", "pickles", "lettuce", "tomato", "cheese"],
     comesWith: [],
     price: "$5.95"
